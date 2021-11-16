@@ -11,6 +11,24 @@
 - [Get Mapping](#get-mapping)
 - [Fetching Data by ID](#fetching-data-by-id)
 - [Daten löschen](#daten-l-schen)
+- [Daten Updaten](#daten-updaten)
+- [Daten fetchen nach Name](#daten-fetchen-nach-name)
+- [Hibernate Validation](#hibernate-validation)
+- [Loggers](#loggers)
+- [Project Lombok](#project-lombok)
+- [Exception Handling](#exception-handling)
+- [H2 zu SQL](#h2-zu-sql)
+- [Unit Testing](#unit-testing)
+  * [Service Layer](#service-layer)
+  * [Repository Layer](#repository-layer)
+  * [Controller Layer](#controller-layer)
+- [Config in Properties](#config-in-properties)
+- [Application.yml](#applicationyml)
+- [Springboot Profile](#springboot-profile)
+- [Projekt in JAR umwandeln](#projekt-in-jar-umwandeln)
+- [Springboot Actuator](#springboot-actuator)
+- [Custom Endpoints](#custom-endpoints)
+- [Endpoints exkludieren](#endpoints-exkludieren)
 
 # Projekt Erstellen
 
@@ -399,3 +417,109 @@ Für jeden Layer Test wird ein neues Package mit jeweils Test Klasse erstellt
 ![](https://raw.githubusercontent.com/Patroick/Springboot_Aufgabe_3/main/2021/11/16-02-28-28-2021-11-16-02-28-22-image.png)
 
 ## Controller Layer
+
+![grafik](https://user-images.githubusercontent.com/43811779/142028285-71fdbab4-1133-4ba8-a360-8f6f8d34255b.png)
+
+![grafik](https://user-images.githubusercontent.com/43811779/142029514-a775a5a9-a35d-4a02-aa9f-f25c841e50be.png)
+
+Test Methode zum speichern der Daten
+
+![grafik](https://user-images.githubusercontent.com/43811779/142029708-22e07369-c508-41e3-9381-6c9c77fdcf78.png)
+
+![grafik](https://user-images.githubusercontent.com/43811779/142029813-7a3ec894-fea6-457e-8569-089312d7352f.png)
+
+Test Methode zum fetchen der Daten
+
+![grafik](https://user-images.githubusercontent.com/43811779/142030417-d15c0899-ba5e-460b-bb45-b6ae8bb0ba5a.png)
+
+![grafik](https://user-images.githubusercontent.com/43811779/142030440-f22f64af-3a35-4aa2-a77c-3767c4fb0c8f.png)
+
+# Config in Properties 
+
+Um Configurationsdateien im Projekt verwenden zu können müssen die Konfigurationsdaten zunächst in der properties Datei hinzugefügt werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142031844-9acbef70-4053-4b60-b68b-a6c063133c54.png)
+
+Mit `@Value` kann dem Datenfeld welcomeMessage der Wert der Configurationsdatei gegeben werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142031878-32e32963-7cf9-43a3-9a00-3b92ce19a400.png)
+
+# Application.yml
+
+Um die application.properties in eine .yml Konfigurationsdatei umzuwandeln muss die .yml Datei erstellt werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142033525-8f39f38d-3f0a-4cf6-b7a2-8ec8b38cc1bd.png)
+
+Dann wird der Code der properties Datei durch einen Online Converter konvertiert und in die .yml Konfigurationsdatei eingefügt und anschließend in der properties Datei auskommentiert oder entfernt
+
+![grafik](https://user-images.githubusercontent.com/43811779/142033703-8458f517-031e-4ffe-a03f-a87c90441386.png)
+
+# Springboot Profile
+
+In der .yml können mehrere Konfigurationsprofile wie folgt erstellt werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142036146-965e3d71-2910-4a39-993e-9e35a5f9e3cc.png)
+
+Das Profil das aktiv verwendte werden soll muss so aktiviert werden 
+
+![grafik](https://user-images.githubusercontent.com/43811779/142036228-055a5466-cc0d-4b6a-ad2f-4494c41194f0.png)
+
+Mithilfe der "---" wird ein neues Dokument innerhalb der .yml gekennzeichnet
+
+![grafik](https://user-images.githubusercontent.com/43811779/142036366-efa3ccc8-34fa-41b3-8118-12ebc06159fe.png)
+
+# Projekt in JAR umwandeln
+
+In der pom.xml sollte die Version auf die gewünschte Version geändert werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142036947-c1f9020b-2db2-4b2c-89c1-b654e2c28df2.png)
+
+Im Terminal kann die Jar Datei des Projektes generiert werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142040379-151a3afc-0f70-49af-b192-f8257331151c.png)
+
+![grafik](https://user-images.githubusercontent.com/43811779/142040430-1f04bb5d-2822-48d6-baf8-29698f0f819f.png)
+
+Ausführen mit diesem Befehl
+
+![grafik](https://user-images.githubusercontent.com/43811779/142040752-6784e2f6-657a-49f8-8ac5-a6dc9b55f7d0.png)
+
+Beenden mit Strg + C
+
+# Springboot Actuator
+
+Die Springboot Actuator Dependency wird benötigt
+
+![grafik](https://user-images.githubusercontent.com/43811779/142042246-771b7eea-809b-4aa5-9e7a-7c2bec42883b.png)
+
+Endpoints von Actuator anzeigen lassen
+
+![grafik](https://user-images.githubusercontent.com/43811779/142043019-8f1ce2e8-c6f5-4703-befb-bc529bdeb9a4.png)
+
+Mit dieser Konfiguration können alle Endpoints angezeigt werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142043431-6f4e991c-5c7a-47a0-9365-9f7781aa9d3a.png)
+
+# Custom Endpoints
+
+Um eigene Endpoints zu erstellen muss ein neues Package und eine Klasse erstellt werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142044045-4e8b997e-3670-4964-8819-25eed9be44dd.png)
+
+`@Endpoint` makiert die Klasse als Endpoint
+
+![grafik](https://user-images.githubusercontent.com/43811779/142044966-96d7d960-39e1-4c0f-86d5-76270464d996.png)
+
+![grafik](https://user-images.githubusercontent.com/43811779/142045238-6f52c7e3-b048-4629-9dd1-fcb48dc64276.png)
+
+![grafik](https://user-images.githubusercontent.com/43811779/142045304-63979b97-dc21-4f99-afd7-b23017ac5b95.png)
+
+# Endpoints exkludieren
+
+Endpoints können einfach mit exclude: exkludiert werden
+
+![grafik](https://user-images.githubusercontent.com/43811779/142046185-dd1ddc16-5e82-4f5f-83da-acfb2686a94b.png)
+
+Nur noch 12 Endpoints anstatt 14
+
+![grafik](https://user-images.githubusercontent.com/43811779/142046212-949988d2-345f-4138-a783-86cffa51af5b.png)
