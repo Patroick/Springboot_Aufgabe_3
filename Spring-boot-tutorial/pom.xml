@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.patrick</groupId>
 	<artifactId>Spring-boot-tutorial</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Spring-boot-tutorial</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -56,6 +56,10 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 	</dependencies>
 
